@@ -1,4 +1,5 @@
 from Bio import Entrez
+from Entry import Entry
 
 Entrez.email = "s.vorbrugg@yahoo.de"
 

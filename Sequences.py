@@ -1,17 +1,20 @@
 import DNA
-import Protein
 import Tax
-import Entry
+import copy
+import Protein;
+
+
+from Entry import Entry
 
 fam = 'Pseudonocardiaceae'
 EC = '5.3.1.8'
-o = Entry
-o.l = "jko"
+o = Entry(fam)
+TaxID = Tax.getTaxonomy(o.family)
 
-print(o.l)
-#TaxID = Tax.getTaxonomy(fam)
-# n = DNA.runDNAPipeline(EC, fam, TaxID)
 
+
+#n = DNA.runDNAPipeline(EC, fam, TaxID)
+#print(len(n))
 #l = Protein.runProteinPipeline(EC, fam, TaxID)
 #print(l)
 

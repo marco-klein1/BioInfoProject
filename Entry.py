@@ -1,4 +1,4 @@
-class Entry:
+class Entry(object):
     '''
         family = ""
     TaxID = ""
@@ -7,8 +7,11 @@ class Entry:
     Sequence = ""
     header = ""
     '''
-    def __init__(self, EC):
-        self.ecNumber = EC
+
+    def __init__(self, fam):
+        self.family = fam
+
+
     def setTaxID(self, tax):
         self.taxID = tax
     def setFamily(self, fam):
@@ -19,8 +22,6 @@ class Entry:
         self.ecNumber = EC
     def setHeader(self, header):
         self.header = header
-    def set
-
     def getFastA(self):
         output = self.header + self.seq + "\n"
 

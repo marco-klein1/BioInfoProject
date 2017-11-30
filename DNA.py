@@ -1,8 +1,11 @@
 from Bio import Entrez
 Entrez.email = "s.vorbrugg@yahoo.de"
 
+from Entry import Entry
+
 def runDNAPipeline(EC, family, ID):
     l = getGeneID(EC, family, ID)
+
     ö = []
     for x in l:
         ö.append(getSequenceParameters(x))
