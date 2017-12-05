@@ -1,13 +1,15 @@
 from Bio import Entrez
+
+from FindOrthologous.Entry import Entry
+import copy
 Entrez.email = "s.vorbrugg@yahoo.de"
 
-from Entry import Entry
 
-def runDNAPipeline(EC, family, ID):
-    l = getGeneID(EC, family, ID)
-
+def runDNAPipeline(dic):
+    l = getGeneID(dic)
     ö = []
     for x in l:
+        ä = copy.deepcopy(dic)
         ö.append(getSequenceParameters(x))
     p = []
     for m in ö:
@@ -16,17 +18,14 @@ def runDNAPipeline(EC, family, ID):
 
 
 
-def getGeneID(EC, family, ID):
-    handle = Entrez.esearch(db="gene", retmax=10000, term=EC + ' AND"' + family + '"[porgn:__txid' + ID + ']')
+def getGeneID(dic):
+    handle = Entrez.esearch(db="gene", retmax=10000, term=dic["ec"] + ' AND"' + dic["family"] + '"[porgn:__txid' + dic["TaxID"] + ']')
     record = Entrez.read(handle)
     handle.close()
     GeneIDs = record['IdList']
     return GeneIDs
 
 def getSequenceParameters(GeneID):
-    start_temp = 0
-    stop_temp = 0
-    chra = ''
     handle = Entrez.esummary(db="gene", id=GeneID)
     record15 = Entrez.read(handle)
     handle.close()
@@ -45,7 +44,6 @@ def getSeq(start, stop, chra):
         else:
             seu += x
         handle2.close()
-
     return seu.replace("\n", "");
 
 

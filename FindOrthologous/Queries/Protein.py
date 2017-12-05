@@ -1,7 +1,6 @@
 from Bio import Entrez
 Entrez.email = "s.vorbrugg@yahoo.de"
 
-
 def runProteinPipeline(EC, family, ID):
     l = getProteinID(EC, family,ID)
     print(len(l))
