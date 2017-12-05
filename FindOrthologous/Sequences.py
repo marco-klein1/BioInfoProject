@@ -10,6 +10,7 @@ EC = '5.3.1.8'
 k = {"family": fam, "ec": EC}
 Tax.getTaxonomy(k)
 print(k["TaxID"])
+print("test")
 
 
 n = DNA.runDNAPipeline(k)
